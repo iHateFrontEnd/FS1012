@@ -1,6 +1,5 @@
 int TP1 = A1;
 int TP2 = A2;
-
 float TP1_Value = 0;
 float TP2_Value = 0;
 float diff = 0;
@@ -13,6 +12,8 @@ void setup() {
 }
 
 void loop() {
+  int time = millis();
+
   TP1_Value = analogRead(TP1);
   TP1_Value = TP1_Value*(5.0/1023.0);
 
@@ -21,13 +22,16 @@ void loop() {
 
   diff = TP1_Value - TP2_Value;
 
-  Serial.print("TP1 ");
+  Serial.print(time);
+  Serial.print(', ');
+
   Serial.print(TP1_Value);
+  Serial.print(", ");
 
-  Serial.print("  TP2 ");
   Serial.print(TP2_Value);
+  Serial.print(", ");
 
-  Serial.print("  diff ");
   Serial.println(diff);
+
   delay(500);
 }
